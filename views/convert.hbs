@@ -1,0 +1,48 @@
+<form method='POST' action='/input/create'>
+    <div class="container">
+        <div class="row">
+            <div class="col text-right">
+                Enter currency amount:
+            </div>
+            <div class="col text-left">
+                <input type='text' name='sourceAmount' value='0'/>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-right">
+                Choose currency:
+            </div>
+            <div class="col text-left">
+                <select name='sourceCurrency' >
+                    {{#each currencyList}}
+                        <option value={{@key}}>{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-right">
+                Choose currency to convert to:
+            </div>
+            <div class="col text-left">
+                <select name='targetCurrency' >
+                    {{#each currencyList}}
+                        <option value={{@index}}>{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <br>
+        {{#if flashMsg}}
+            <div class="alert alert-danger border border-dark">
+                {{ flashMsg }}
+            </div>
+        {{/if}}
+    </div>
+    <div class="alert-warning border-top border-dark">
+        <input type='submit' value='Convert' class="btn btn-info  m-2">
+        <a href="/" class="btn btn-primary m-2">Cancel</a>
+    </div>
+</form>

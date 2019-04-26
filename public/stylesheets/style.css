@@ -1,0 +1,32 @@
+body {
+  width: 75%;
+  margin: auto;
+  text-align: center;
+  border: 1px solid #000000;
+  background-color: #eeeeee;
+}
+
+header {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+#info {
+  font-size: 28px;
+}
+
+input[name=amount] {
+  width: 150px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#rate {
+  width:110%;
+  margin-top:.5em;
+}

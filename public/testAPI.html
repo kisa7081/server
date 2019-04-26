@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Currency Converter Test</title>
+    <meta charset='utf-8' />
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='stylesheets/style.css' rel='stylesheet'>
+
+</head>
+
+<body class="mt-4 mb-4">
+    <section>
+        <header>
+            <h1 id='title' class="alert-danger border-bottom border-dark">
+                Currency Converter Test
+            </h1>
+            <p id='info' class="alert-success text-center border-top border-bottom border-dark">
+                Use this page to test the APIs.<br/>The first row of selections are the values to begin with, <br/>the second row are the values to update to.
+                <br>
+            </p>
+        </header>
+    </section>
+    <hr>
+    <div class="container">
+        <div class="row alert-info border border-dark font-weight-bold">
+            <div class="col">
+                Source Amount
+            </div>
+            <div class="col">
+                Source Currency
+            </div>
+            <div class="col">
+                Target Currency
+            </div>
+        </div>
+        <br />
+        <div class="row ">
+            <div class="col">
+                <input type='text' id='sourceAmountSrc' value='42' />
+            </div>
+            <div class="col">
+                <select name='sourceCurrencySrc' id='sourceCurrencySrc'>
+                </select>
+            </div>
+            <div class="col">
+                <select name='targetCurrencySrc' id='targetCurrencySrc'>
+                </select>
+            </div>
+        </div>
+        <br />
+        <div class="row ">
+            <div class="col">
+                <input type='text' id='sourceAmountTar' value='24' />
+            </div>
+            <div class="col">
+                <select name='sourceCurrencyTar' id='sourceCurrencyTar'>
+                </select>
+            </div>
+            <div class="col">
+                <select name='targetCurrencyTar' id='targetCurrencyTar'>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="alert-warning border-top border-bottom border-dark">
+        <input id='testButton' type='submit' value='Test' class="btn btn-info  m-2">
+    </div>
+    <br/>
+    <div class="alert-danger border-top border-bottom border-dark">
+        JSON Output
+    </div>
+    <div id='output' class="container">
+    </div>
+    <script type="text/javascript" src="js/api.js"></script>
+</body>
+
+</html>

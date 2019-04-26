@@ -1,0 +1,73 @@
+<hr>
+<div class="container">
+    <div class="row alert-info border border-dark font-weight-bold">
+        <div class="col">
+            Source Amount
+        </div>
+        <div class="col">
+            Source Currency
+        </div>
+        <div class="col">
+            Target Currency
+        </div>
+        <div class="col">
+            Rate
+        </div>
+        <div class="col">
+            Converted Amount
+        </div>
+        <div class="col">
+            Time
+        </div>
+        <div class="col">
+            Action
+        </div>
+    </div>
+    {{#each conversions}}
+        <div class="row ">
+            <div class="col">
+                {{this.sourceAmount}}
+            </div>
+            <div class="col">
+                {{this.sourceCurrency}}
+            </div>
+            <div class="col">
+                {{this.targetCurrency}}
+            </div>
+            <div class="col">
+                <form method='POST' action='/input/update'>
+                    <input type='hidden' name='_id' value='{{this.id}}' />
+                    <input type='hidden' name='sourceAmount' value='{{this.sourceAmount}}' />
+                    <input type='hidden' name='sourceCurrency' value='{{this.sourceCurrency}}' />
+                    <input type='hidden' name='targetCurrency' value='{{this.targetCurrency}}' />
+                    <input type='hidden' name='counter' value='{{@index}}' />
+                    <input type='text' id='rate' name='rate' value='{{this.rate}}' />
+                    {{#ifflashMsg @index }}
+                    {{/ifflashMsg}}
+                    <input type='submit' class="btn btn-success m-2" value='Update' />
+                </form>
+            </div>
+            <div class="col">
+                {{this.convertedAmount}}
+            </div>
+            <div class="col">
+                {{this.timeStamp}}
+            </div>
+            <div class="col">
+                <form method='POST' action='/input/delete'>
+                    <input type='hidden' name='_id' value='{{this.id}}' />
+                    <input type='submit' class="btn btn-dark m-2" value='Delete' />
+                </form>
+            </div>
+        </div>
+    {{/each}}
+</div>
+<footer class="alert-warning border-top border-dark">
+    <a href="/input" class="btn btn-primary m-2">Create a Conversion</a>
+    <a href="/input/refresh" class="btn btn-info m-2">Refresh rates</a>
+    <a href="/input/deleteAll" class="btn btn-danger m-2">Clear Conversion List</a>
+</footer>
+
+
+
+
