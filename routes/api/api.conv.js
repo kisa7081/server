@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ConvService = require('../../services/converterService');
+const converter = require('../../controllers/convController');
 
 router.use((req, res, next) => {
     res.set({
@@ -16,6 +17,31 @@ router.use((req, res, next) => {
         return res.status(200).end();
     }
     next();
+});
+
+router.get('/refreshRates', async function (req, res, next) {
+    //Get the latest rates from web service
+    await converter.refreshRates();
+    res.end();
+});
+
+router.get('/timestamp', (req, res, next) =>{
+    try {
+        console.log(converter.getTimestamp());
+        res.json(converter.getTimestamp());
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.status(404);
+        res.end();
+    }
+});
+
+/* DELETE document via DELETE */
+router.delete('/deleteAll', async (req, res, next) => {
+    const c = await ConvService.deleteAll();
+    res.json(c);
+    res.end();
 });
 
 /* GET currencies to populate test API page */
@@ -77,15 +103,5 @@ router.delete('/:id', async (req, res, next) => {
     res.end();
 });
 
-router.get('/getTimestamp', (req, res, next) =>{
-    try {
-        res.json(converter.getTimestamp());
-        res.end();
-    } catch (err) {
-        console.log(err);
-        res.status(404);
-        res.end();
-    }
-});
 
 module.exports = router;
