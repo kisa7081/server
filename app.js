@@ -39,8 +39,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', router);
+app.use('/cv', router);
 app.use('/api/conv', apirouter);
+app.use('/', express.static('../client/client/dist/client'));
+app.use('/create', express.static('../client/client/dist/client'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
